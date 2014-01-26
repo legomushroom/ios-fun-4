@@ -42,6 +42,7 @@
     Main.prototype.setProgress = function(n, isImidiate) {
       var it, tween;
 
+      TWEEN.removeAll();
       n = this.normalizeNum(n);
       it = this;
       if (!isImidiate) {

@@ -31,6 +31,7 @@ class Main
 		obj
 
 	setProgress:(n, isImidiate)->
+		TWEEN.removeAll()
 		n = @normalizeNum n
 		it = @
 		if !isImidiate
