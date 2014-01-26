@@ -1,0 +1,90 @@
+<svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" style="margin-left:100%;position:absolute;">
+  <defs>
+    <linearGradient id="redyel" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ff0000"/>   
+        <stop offset="100%" stop-color="#ffff00"/>   
+    </linearGradient>
+    <linearGradient id="yelgre" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffff00"/>   
+        <stop offset="100%" stop-color="#00ff00"/>   
+    </linearGradient>
+    <linearGradient id="grecya" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00ff00"/>   
+        <stop offset="100%" stop-color="#00ffff"/>   
+    </linearGradient>
+    <linearGradient id="cyablu" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00ffff"/>   
+        <stop offset="100%" stop-color="#0000ff"/>   
+    </linearGradient>
+    <linearGradient id="blumag" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0000ff"/>   
+        <stop offset="100%" stop-color="#ff00ff"/>   
+    </linearGradient>
+    <linearGradient id="magred" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ff00ff"/>   
+        <stop offset="100%" stop-color="#ff0000"/>   
+    </linearGradient>
+
+    <pattern id="gradient-pattern" width="1" height="1000" patternUnits="userSpaceOnUse">
+        <g id="js-gradient">
+            <rect x="0" y="0" width="1" height="16.666666667%" fill="url(#redyel)" />
+            <rect x="0" y="16.666666667%"  width="1" height="16.666666667%" fill="url(#yelgre)" />
+            <rect x="0" y="33.333333334%"  width="1" height="16.666666667%" fill="url(#grecya)" />
+            <rect x="0" y="50.000000001%"  width="1" height="16.666666667%" fill="url(#cyablu)" />
+            <rect x="0" y="66.666666668%"  width="1" height="16.666666667%" fill="url(#blumag)" />
+            <rect x="0" y="83.333333335%"  width="1" height="16.666666667%" fill="url(#magred)" />
+        </g>
+    </pattern>
+
+
+    
+
+    <mask id="mask2" style="stroke:#ccc;stroke-width:2px;">
+        <!-- L -->
+        <line id="l1" fill="none" x1="165" y1="435" x2="165" y2="565" x1e="165" y1e="500" x2e="215" y2e="500" />
+
+        <line id="l2" fill="none" x1="241.758" y1="565" x2="163.164" y2="565" x1e="215" y1e="500" x2e="265" y2e="500" />
+
+
+        <!-- O -->
+        <path id="o1" fill="none" d="M304.783,434.547 c-72.952,-1.643,-79.275,130.933,0,130.921" d2="265,500 c0,0,0,0, 50,0" />
+
+        <path id="o2" fill="none" d="M304.783,434.547c72.945,-1.643,79.269,130.933,0,130.921" d2="265,500 c0,0,0,0, 50,0" />
+
+        <!-- A -->
+        <line id="a1" fill="none" x1="369.308" y1="565" x2="421.327" y2="435" x1e="315" y1e="500" x2e="365" y2e="500" />
+
+        <line id="a2" fill="none" x1="472.825" y1="565" x2="422.718" y2="435" x1e="365" y1e="500" x2e="415" y2e="500" />
+
+        <line id="a3" fill="none" x1="386.5" y1="520.379" x2="455.654" y2="520.379" x1e="415" y1e="500" x2e="465" y2e="500"  />
+
+        <!-- D -->
+        <line id="d1" fill="none" x1="490.387" y1="435" x2="490.387" y2="565" x1e="465" y1e="500" x2e="515" y2e="500" />
+        <path id="d2" fill="none" d="M490,436 c117.177,-0.025,117.11,125.438,-0.066,128" d2="515,500 c0,0,0,0, 50,0" />
+
+
+
+        <!-- I -->
+        <line id="i1" fill="none" x1="600.993" y1="435" x2="600.993" y2="565" x1e="565" y1e="500" x2e="615" y2e="500" />
+
+        <!-- N -->
+        <line id="n1" fill="none" x1="625.529" y1="565" x2="625.529" y2="435" x1e="615" y1e="500" x2e="665" y2e="500" />
+        <line id="n2" fill="none" x1="625.771" y1="435" x2="718.609" y2="565"  x1e="665" y1e="500" x2e="715" y2e="500" />
+        <line id="n3" fill="none" x1="718.893" y1="435" x2="718.893" y2="565" x1e="715" y1e="500" x2e="765" y2e="500" />
+
+
+
+
+        <line id="g1" fill="none" x1="796.983" y1="504.984" x2="850.393" y2="504.984" x1e="765" y1e="500" x2e="815" y2e="500" />
+        <path id="g2" fill="none" d="M850.038,476.075c-156.441,-157.38,-133.058,224.829,1.558,28.236" d2="815,500 c0,0,0,0, 50,0" />
+
+    </mask>
+
+
+  </defs>
+
+</svg>
+
+
+
+
