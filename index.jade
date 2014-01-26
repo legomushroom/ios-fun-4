@@ -22,7 +22,23 @@ html
 		script(src="js/main.js")
 
 		script
-			new window.Loading
+			var Loading = new window.Loading
+			setTimeout(function(){
+				Loading.setProgress(10);
+			}, 1000)
+
+			setTimeout(function(){
+				Loading.setProgress(20);
+			}, 3000)
+
+			setTimeout(function(){
+				Loading.setProgress(70);
+			}, 6000)
+
+			setTimeout(function(){
+				Loading.setProgress(100);
+			}, 9000)
+			
 
 
 

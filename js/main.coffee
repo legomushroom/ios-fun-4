@@ -1,9 +1,9 @@
 
 class Main
 	defaults:
-		transition:    500
+		transition:    1500
 		delay: 				 4000
-		rainbowTime:   10000
+		rainbowTime:   30000
 		particleDelay: 0
 
 	constructor:(@o={})->
@@ -15,11 +15,10 @@ class Main
 	vars:->
 		@settings = @extend @defaults, @o
 
-		@percent = 6.9
-		@currentProgress = 0
+		@currentProgress = 2000
 
 		@rainbow = document.getElementById('rainbow')
-		@process = document.getElementById('process')
+		@process = document.getElementById('js-process')
 		@easing  = TWEEN.Easing.Quadratic.In
 
 		@animate 			= @bind @animate, @
@@ -32,19 +31,28 @@ class Main
 
 	setProgress:(n)->
 		n = @normalizeNum n
+		it = @
+		tween = new TWEEN.Tween({ p: @currentProgress })
+			.to({ p: n }, @settings.transition)
+			.onUpdate(->
+				it.process.setAttribute 'stroke-dashoffset', @p
+				it.currentProgress = @p
+			).start()
+
 
 	animateRainbow:->
 		it = @
-		console.log @settings.rainbowTime
 		tween = new TWEEN.Tween({ deg: 0 })
 			.to({ deg: 360 }, @settings.rainbowTime)
 			.onUpdate(->
 				it.rainbow.setAttribute 'transform', 'rotate(' + @deg + ', 500, 500)'
-			).start().repeat(true)
+			).start().repeat(9999999999999999)
 
 	normalizeNum:(n)->
 		n = n % 101
-		@percent * n
+		n = n/100
+		n *= 2000
+		n = 2000 - n
 
 	animate:->
 		requestAnimationFrame(@animate)

@@ -4,9 +4,9 @@
 
   Main = (function() {
     Main.prototype.defaults = {
-      transition: 500,
+      transition: 1500,
       delay: 4000,
-      rainbowTime: 10000,
+      rainbowTime: 30000,
       particleDelay: 0
     };
 
@@ -19,10 +19,9 @@
 
     Main.prototype.vars = function() {
       this.settings = this.extend(this.defaults, this.o);
-      this.percent = 6.9;
-      this.currentProgress = 0;
+      this.currentProgress = 2000;
       this.rainbow = document.getElementById('rainbow');
-      this.process = document.getElementById('process');
+      this.process = document.getElementById('js-process');
       this.easing = TWEEN.Easing.Quadratic.In;
       return this.animate = this.bind(this.animate, this);
     };
@@ -40,26 +39,38 @@
     };
 
     Main.prototype.setProgress = function(n) {
-      return n = this.normalizeNum(n);
+      var it, tween;
+
+      n = this.normalizeNum(n);
+      it = this;
+      return tween = new TWEEN.Tween({
+        p: this.currentProgress
+      }).to({
+        p: n
+      }, this.settings.transition).onUpdate(function() {
+        it.process.setAttribute('stroke-dashoffset', this.p);
+        return it.currentProgress = this.p;
+      }).start();
     };
 
     Main.prototype.animateRainbow = function() {
       var it, tween;
 
       it = this;
-      console.log(this.settings.rainbowTime);
       return tween = new TWEEN.Tween({
         deg: 0
       }).to({
         deg: 360
       }, this.settings.rainbowTime).onUpdate(function() {
         return it.rainbow.setAttribute('transform', 'rotate(' + this.deg + ', 500, 500)');
-      }).start().repeat(true);
+      }).start().repeat(9999999999999999);
     };
 
     Main.prototype.normalizeNum = function(n) {
       n = n % 101;
-      return this.percent * n;
+      n = n / 100;
+      n *= 2000;
+      return n = 2000 - n;
     };
 
     Main.prototype.animate = function() {
