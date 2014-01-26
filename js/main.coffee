@@ -3,7 +3,7 @@ class Main
 	defaults:
 		transition:    1500
 		delay: 				 4000
-		rainbowTime:   30000
+		rainbowTime:   20000
 		particleDelay: 0
 
 	constructor:(@o={})->
@@ -17,9 +17,11 @@ class Main
 
 		@currentProgress = 2000
 
-		@rainbow = document.getElementById('rainbow')
-		@process = document.getElementById('js-process')
-		@easing  = TWEEN.Easing.Quadratic.In
+		@rainbow 			= document.getElementById('rainbow')
+		@process 			= document.getElementById('js-process')
+		@processText 	= document.getElementById('js-process-text')
+		console.log 	@processText
+		@easing  			= TWEEN.Easing.Quadratic.In
 
 		@animate 			= @bind @animate, @
 
@@ -30,6 +32,7 @@ class Main
 		obj
 
 	setProgress:(n)->
+		progress = n % 101
 		n = @normalizeNum n
 		it = @
 		tween = new TWEEN.Tween({ p: @currentProgress })
@@ -37,6 +40,7 @@ class Main
 			.onUpdate(->
 				it.process.setAttribute 'stroke-dashoffset', @p
 				it.currentProgress = @p
+				it.processText.nodeValue = @p
 			).start()
 
 

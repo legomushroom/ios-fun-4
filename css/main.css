@@ -136,7 +136,7 @@ html {
   overflow-x: hidden;
 }
 body {
-  background-color: #fff;
+  background-color: #000;
 }
 ::selection{
 		background-color: #f59995;

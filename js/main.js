@@ -6,7 +6,7 @@
     Main.prototype.defaults = {
       transition: 1500,
       delay: 4000,
-      rainbowTime: 30000,
+      rainbowTime: 20000,
       particleDelay: 0
     };
 
@@ -22,6 +22,8 @@
       this.currentProgress = 2000;
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('js-process');
+      this.processText = document.getElementById('js-process-text');
+      console.log(this.processText);
       this.easing = TWEEN.Easing.Quadratic.In;
       return this.animate = this.bind(this.animate, this);
     };
@@ -39,8 +41,9 @@
     };
 
     Main.prototype.setProgress = function(n) {
-      var it, tween;
+      var it, progress, tween;
 
+      progress = n % 101;
       n = this.normalizeNum(n);
       it = this;
       return tween = new TWEEN.Tween({
@@ -49,7 +52,8 @@
         p: n
       }, this.settings.transition).onUpdate(function() {
         it.process.setAttribute('stroke-dashoffset', this.p);
-        return it.currentProgress = this.p;
+        it.currentProgress = this.p;
+        return it.processText.nodeValue = this.p;
       }).start();
     };
 
