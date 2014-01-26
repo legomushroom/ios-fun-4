@@ -33,7 +33,6 @@ class Main
 	setProgress:(n)->
 		n = @normalizeNum n
 
-
 	animateRainbow:->
 		it = @
 		console.log @settings.rainbowTime
