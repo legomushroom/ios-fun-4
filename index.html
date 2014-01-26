@@ -47,7 +47,7 @@
     
 
     <mask id="mask2">
-        <path id="js-process"  stroke-dasharray="2000 2000" stroke-dashoffset="2000" vector-effect="non-scaling-stroke" fill="none" stroke="#fff" stroke-width="4" stroke-miterlimit="10" d="M500,190.041
+        <path id="js-process"  stroke-dasharray="2000 2000" stroke-dashoffset="2000" vector-effect="non-scaling-stroke" fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" d="M500,190.041
         c-171.186,0-309.959,138.773-309.959,309.959c0,171.186,138.773,309.959,309.959,309.959c171.186,0,309.959-138.773,309.959-309.959
         C809.959,328.814,671.186,190.041,500,190.041"/>
         <text id="js-process-text"  vector-effect="non-scaling-stroke" fill="#fff" transform="translate(500,530)" font-family="HelveticaNeue-UltraLight" font-size="100" style="font-weight: 100;" text-anchor="middle">0%</text>
@@ -75,22 +75,31 @@
     <script src="js/tween.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-      var Loading = new window.Loading
-      setTimeout(function(){
-       Loading.setProgress(10);
-      }, 1000)
+      var Loading = new window.Loading({	
+       transition: 2000
+      });
       
-      setTimeout(function(){
-       Loading.setProgress(20);
-      }, 3000)
-      
-      setTimeout(function(){
-       Loading.setProgress(70);
-      }, 6000)
-      
-      setTimeout(function(){
-       Loading.setProgress(100);
-      }, 9000)
+      var run = function(){
+       Loading.setProgress(0)
+       
+       setTimeout(function(){
+        Loading.setProgress(10);
+       }, 4000)
+       
+       setTimeout(function(){
+        Loading.setProgress(20);
+       }, 6000)
+       
+       setTimeout(function(){
+        Loading.setProgress(70);
+       }, 9000)
+       
+       setTimeout(function(){
+        Loading.setProgress(100);
+       }, 12000)
+      }
+      setInterval(run, 19000)
+      run();
       
       
       

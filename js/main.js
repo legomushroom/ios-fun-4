@@ -4,7 +4,7 @@
 
   Main = (function() {
     Main.prototype.defaults = {
-      transition: 1500,
+      transition: 1000,
       delay: 4000,
       rainbowTime: 20000,
       particleDelay: 0
@@ -23,8 +23,7 @@
       this.rainbow = document.getElementById('rainbow');
       this.process = document.getElementById('js-process');
       this.processText = document.getElementById('js-process-text');
-      console.log(this.processText);
-      this.easing = TWEEN.Easing.Quadratic.In;
+      this.easing = TWEEN.Easing.Quadratic.Out;
       return this.animate = this.bind(this.animate, this);
     };
 
@@ -40,21 +39,26 @@
       return obj;
     };
 
-    Main.prototype.setProgress = function(n) {
-      var it, progress, tween;
+    Main.prototype.setProgress = function(n, isImidiate) {
+      var it, tween;
 
-      progress = n % 101;
       n = this.normalizeNum(n);
       it = this;
-      return tween = new TWEEN.Tween({
-        p: this.currentProgress
-      }).to({
-        p: n
-      }, this.settings.transition).onUpdate(function() {
-        it.process.setAttribute('stroke-dashoffset', this.p);
-        it.currentProgress = this.p;
-        return it.processText.nodeValue = this.p;
-      }).start();
+      if (!isImidiate) {
+        return tween = new TWEEN.Tween({
+          p: this.currentProgress
+        }).to({
+          p: n
+        }, this.settings.transition).easing(this.easing).onUpdate(function() {
+          it.process.setAttribute('stroke-dashoffset', this.p);
+          it.currentProgress = this.p;
+          return it.processText.textContent = "" + (100 - (this.p / 20).toFixed(0)) + "%";
+        }).start();
+      } else {
+        this.process.setAttribute('stroke-dashoffset', n);
+        this.currentProgress = n;
+        return this.processText.textContent = "" + (100 - (n / 20).toFixed(0)) + "%";
+      }
     };
 
     Main.prototype.animateRainbow = function() {

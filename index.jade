@@ -22,22 +22,32 @@ html
 		script(src="js/main.js")
 
 		script
-			var Loading = new window.Loading
-			setTimeout(function(){
-				Loading.setProgress(10);
-			}, 1000)
+			var Loading = new window.Loading({	
+				transition: 2000
+			});
 
-			setTimeout(function(){
-				Loading.setProgress(20);
-			}, 3000)
+			var run = function(){
+				Loading.setProgress(0)
 
-			setTimeout(function(){
-				Loading.setProgress(70);
-			}, 6000)
+				setTimeout(function(){
+					Loading.setProgress(10);
+				}, 4000)
 
-			setTimeout(function(){
-				Loading.setProgress(100);
-			}, 9000)
+				setTimeout(function(){
+					Loading.setProgress(20);
+				}, 6000)
+
+				setTimeout(function(){
+					Loading.setProgress(70);
+				}, 9000)
+
+				setTimeout(function(){
+					Loading.setProgress(100);
+				}, 12000)
+			}
+			
+			setInterval(run, 19000)
+			run();
 			
 
 

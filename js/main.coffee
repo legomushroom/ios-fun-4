@@ -1,7 +1,7 @@
 
 class Main
 	defaults:
-		transition:    1500
+		transition:    1000
 		delay: 				 4000
 		rainbowTime:   20000
 		particleDelay: 0
@@ -20,8 +20,7 @@ class Main
 		@rainbow 			= document.getElementById('rainbow')
 		@process 			= document.getElementById('js-process')
 		@processText 	= document.getElementById('js-process-text')
-		console.log 	@processText
-		@easing  			= TWEEN.Easing.Quadratic.In
+		@easing  			= TWEEN.Easing.Quadratic.Out
 
 		@animate 			= @bind @animate, @
 
@@ -31,17 +30,23 @@ class Main
 			if obj2[key]? then obj[key] = value
 		obj
 
-	setProgress:(n)->
-		progress = n % 101
+	setProgress:(n, isImidiate)->
 		n = @normalizeNum n
 		it = @
-		tween = new TWEEN.Tween({ p: @currentProgress })
-			.to({ p: n }, @settings.transition)
-			.onUpdate(->
-				it.process.setAttribute 'stroke-dashoffset', @p
-				it.currentProgress = @p
-				it.processText.nodeValue = @p
-			).start()
+		if !isImidiate
+			tween = new TWEEN.Tween({ p: @currentProgress })
+				.to({ p: n }, @settings.transition)
+				.easing(@easing)
+				.onUpdate(->
+					it.process.setAttribute 'stroke-dashoffset', @p
+					it.currentProgress = @p
+					it.processText.textContent = "#{100-(@p/20).toFixed(0)}%"
+				).start()
+		else
+			@process.setAttribute 'stroke-dashoffset', n
+			@currentProgress = n
+			@processText.textContent = "#{100-(n/20).toFixed(0)}%"
+
 
 
 	animateRainbow:->
