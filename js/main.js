@@ -40,13 +40,13 @@
     };
 
     Main.prototype.setProgress = function(n, isImidiate) {
-      var it, tween;
+      var it;
 
-      TWEEN.removeAll();
+      TWEEN.remove(this.tween);
       n = this.normalizeNum(n);
       it = this;
       if (!isImidiate) {
-        return tween = new TWEEN.Tween({
+        return this.tween = new TWEEN.Tween({
           p: this.currentProgress
         }).to({
           p: n

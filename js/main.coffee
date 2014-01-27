@@ -31,11 +31,11 @@ class Main
 		obj
 
 	setProgress:(n, isImidiate)->
-		TWEEN.removeAll()
+		TWEEN.remove @tween
 		n = @normalizeNum n
 		it = @
 		if !isImidiate
-			tween = new TWEEN.Tween({ p: @currentProgress })
+			@tween = new TWEEN.Tween({ p: @currentProgress })
 				.to({ p: n }, @settings.transition)
 				.easing(@easing)
 				.onUpdate(->
